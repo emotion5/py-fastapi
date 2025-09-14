@@ -58,3 +58,5 @@ streamlit run streamlit_app.py
 - Data is stored in memory only - restarting the backend clears all memos
 - The project uses uv for dependency management (not pip)
 - Korean language is used in the UI and API responses for learning purposes
+- Do not include Claude Code attribution or copyright notices in commit messages
+- Keep commit messages clean and focused on technical changes only
