@@ -1,13 +1,13 @@
-# FastAPI 기초 학습 프로젝트 (Product Requirements Document)
+# FastAPI 기초 학습 - 간단한 메모장 (Product Requirements Document)
 
 ## 프로젝트 개요
-FastAPI 기초를 학습하고 이후 Streamlit과 연결할 준비를 하는 최소 환경 설정 프로젝트
+FastAPI를 이해하기 위한 아주 간단한 한줄 메모장 애플리케이션
 
 ## 목표
 - FastAPI 기본 개념 이해
-- REST API CRUD 작업 구현
+- 메모 CRUD 작업 구현 (단계별)
 - API 문서화 자동 생성 확인
-- Pydantic을 이용한 데이터 검증
+- Pydantic 데이터 검증 학습
 - 기본 에러 처리
 
 ## 기술 스택
@@ -15,29 +15,27 @@ FastAPI 기초를 학습하고 이후 Streamlit과 연결할 준비를 하는 �
 - **FastAPI**: 웹 프레임워크
 - **Uvicorn**: ASGI 서버
 - **Pydantic**: 데이터 검증
-- **httpx**: HTTP 클라이언트 (테스트용)
 
-## 구현 기능
+## 구현 기능 (단계별 학습)
 
 ### 1. 기본 API 엔드포인트
 - `GET /`: 웰컴 메시지 반환
-- `GET /items`: 모든 아이템 조회
-- `GET /items/{item_id}`: 특정 아이템 조회
-- `POST /items`: 새 아이템 생성
-- `PUT /items/{item_id}`: 아이템 수정
-- `DELETE /items/{item_id}`: 아이템 삭제
 
-### 2. 데이터 모델
+### 2. 메모 API 엔드포인트 (하나씩 추가하며 학습)
+- `GET /memos`: 모든 메모 조회
+- `POST /memos`: 새 메모 생성
+- `GET /memos/{memo_id}`: 특정 메모 조회
+- `DELETE /memos/{memo_id}`: 메모 삭제
+
+### 3. 데이터 모델
 ```python
-class Item(BaseModel):
-    id: Optional[int] = None
-    name: str
-    description: str
-    price: float
+class Memo(BaseModel):
+    content: str  # 메모 내용 (필수)
+    # id는 서버에서 자동 생성
 ```
 
-### 3. 에러 처리
-- 404: 아이템을 찾을 수 없을 때
+### 4. 에러 처리
+- 404: 메모를 찾을 수 없을 때
 - 적절한 HTTP 상태 코드 반환
 
 ## 실행 방법
