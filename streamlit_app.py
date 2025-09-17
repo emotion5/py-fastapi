@@ -9,8 +9,16 @@ st.set_page_config(
     layout="centered"
 )
 
-# API 베이스 URL
-API_BASE = "http://localhost:8000"
+# API 베이스 URL - 환경에 따라 동적 설정
+import os
+PORT = os.environ.get("PORT", "8000")
+HOST = os.environ.get("HOST", "localhost")
+
+# Render.com 배포시에는 동일 서버의 다른 포트 사용
+if "onrender.com" in os.environ.get("RENDER_EXTERNAL_URL", ""):
+    API_BASE = f"http://localhost:{PORT}"
+else:
+    API_BASE = f"http://{HOST}:{PORT}"
 
 # 커스텀 CSS로 회색조 미니멀 디자인
 st.markdown("""
