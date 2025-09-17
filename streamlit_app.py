@@ -33,7 +33,6 @@ st.markdown("""
         border-left: 4px solid #6c757d;
         padding: 1rem;
         margin: 0.5rem 0;
-        border-radius: 0.25rem;
     }
     .memo-content {
         color: #495057;
@@ -48,18 +47,42 @@ st.markdown("""
         background-color: #6c757d;
         color: white;
         border: none;
-        border-radius: 0.25rem;
         padding: 0.25rem 0.75rem;
         font-size: 0.875rem;
     }
     .stButton > button:hover {
         background-color: #545b62;
     }
+
+    /* 입력 필드 직각 처리 */
+    .stTextInput > div > div > input {
+        border-radius: 0;
+    }
+
+    /* 입력 필드 컨테이너 직각 처리 */
+    .stTextInput > div > div {
+        border-radius: 0;
+    }
+
+    /* 폼 제출 버튼 직각 처리 */
+    .stFormSubmitButton > button {
+        border-radius: 0;
+    }
+
+    /* 폼 전체 컨테이너 직각 처리 */
+    .stForm {
+        border-radius: 0;
+    }
+
+    /* 폼 내부 컨테이너 직각 처리 */
+    .stForm > div {
+        border-radius: 0;
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # 제목
-st.markdown('<h1 class="main-header">📝 간단한 메모장</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="main-header">간단 메모</h1>', unsafe_allow_html=True)
 
 # FastAPI 연결 확인
 def check_api_connection():
@@ -74,7 +97,7 @@ if not check_api_connection():
     st.stop()
 
 # 메모 추가 섹션
-st.markdown("### 새 메모 작성")
+st.markdown("### ")
 with st.form("memo_form"):
     memo_content = st.text_input("메모 내용", placeholder="메모를 입력하세요...", label_visibility="collapsed")
     submit_button = st.form_submit_button("메모 추가")
@@ -135,4 +158,4 @@ except Exception as e:
 
 # 하단 정보
 st.markdown("---")
-st.markdown("*FastAPI + Streamlit으로 만든 간단한 메모장*")
+st.markdown("*간단 메모리 메모장*")
